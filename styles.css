@@ -246,6 +246,37 @@ body {
 
 
 
+.slider-track img {
+  width: 350px;
+  height: 300px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+  .slider-container {
+  width: 100%;
+  overflow: hidden;
+  max-width: calc(350px * 3 + 40px); 
+  margin: 40px 0px 20px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+}
+
+
+
+
+
+
+
+
 
 
 .testimonial-section {

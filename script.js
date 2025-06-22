@@ -14,3 +14,22 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
+
+
+
+
+
+
+  // ----------------------------SLIDER------------------------------
+const imageWidth = 350;
+const imageGap = 20;
+const totalWidth = imageWidth + imageGap;
+
+let index = 0;
+function slideImages() {
+  index++;
+  if (index > images.length - 3) index = 0;
+  sliderTrack.style.transform = `translateX(-${index * totalWidth}px)`;
+}
+
+
