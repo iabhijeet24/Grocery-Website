@@ -258,10 +258,9 @@ body {
   width: 100%;
   overflow: hidden;
   max-width: calc(350px * 3 + 40px); 
-  margin: 40px 0px 20px 20px;
+  margin: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: none;
 }
 
 .slider-track {
