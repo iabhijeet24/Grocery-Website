@@ -80,21 +80,13 @@ body {
 .navbar .btn-login,
 .navbar .btn-signup {
     padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 30px;
+    border: 2px solid black;
+    border-radius: 35px;
     cursor: pointer;
     font-size: 1rem;
-  
-}
-
-.navbar .btn-login {
-    background-color: black;
-    color: white;
-}
-
-.navbar .btn-signup {
-    background-color: black;
-    color: white;
+    background-color:none;
+    color: black;
+    font-weight: 500;
 }
 
 .navbar .btn-login:hover {
