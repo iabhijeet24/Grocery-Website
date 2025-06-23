@@ -40,3 +40,42 @@
 
 
 
+
+
+
+
+
+  // -------------------slider2-----------------------
+
+
+  const sliderTrack2 = document.getElementById("sliderTrack2");
+
+let isDragging = false;
+let startX;
+let scrollLeft;
+
+sliderTrack2.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.pageX - sliderTrack.offsetLeft;
+  scrollLeft = sliderTrack.scrollLeft;
+  sliderTrack.style.cursor = "grabbing";
+});
+
+sliderTrack2.addEventListener("mouseleave", () => {
+  isDragging = false;
+  sliderTrack.style.cursor = "grab";
+});
+
+sliderTrack2.addEventListener("mouseup", () => {
+  isDragging = false;
+  sliderTrack.style.cursor = "grab";
+});
+
+sliderTrack2.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - sliderTrack.offsetLeft;
+  const walk = (x - startX) * 1.2; 
+  sliderTrack2.scrollLeft = scrollLeft - walk;
+});
+

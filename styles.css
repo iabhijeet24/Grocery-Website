@@ -24,9 +24,9 @@ body {
 }
 /* Navbar */
 .navbar {
-    width: 75%;
+    width: 70%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 1rem 2rem;
     background-color: inherit;
@@ -35,6 +35,48 @@ body {
     flex-wrap: wrap;
 
 }
+.navbar {
+  padding: 15px 30px;
+  background-color: none;
+  font-family: sans-serif;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: #4CAF50;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
 
 .navbar .logo {
     display: flex;
@@ -48,7 +90,6 @@ body {
 .navbar .logo img {
     width: 150px;
     height: 70px;
-    /* margin-left: 30px; */
 }
 
 .navbar .nav-links {
@@ -68,37 +109,26 @@ body {
     font-weight: 300;
 }
 
-.navbar .nav-links a:hover {
-    color: #ffdd57;
-}
-
-.navbar .nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.navbar .btn-login,
 .navbar .btn-signup {
-    padding: 0.5rem 1rem;
-    border: 2px solid black;
-    border-radius: 35px;
-    cursor: pointer;
-    font-size: 1rem;
-    background-color:none;
-    color: black;
-    font-weight: 500;
+  padding: 0.8rem 1.3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(135deg, #24b92b, #1d9f23);
+  box-shadow: 0 4px 10px rgba(36, 185, 43, 0.3);
+  transition: all 0.3s ease;
 }
-
-.navbar .btn-login:hover {
-    background-color: wheat;
-    color: black;
-}
-
 
 .navbar .btn-signup:hover {
-    background-color: wheat;
-    color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(36, 185, 43, 0.5);
 }
+
+
+
 
 /* Hero Section */
 .hero {
@@ -231,6 +261,38 @@ body {
         gap: 10px;
     }
 }
+
+
+
+.slider-container2 {
+  width: 100%;
+  max-width: 1920px;
+  height: 1024px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+}
+
+.slider-track2 {
+  display: flex;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+
+.slider-track2 img {
+  width: 1920px;
+  height: 1024px;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
 
 
 
