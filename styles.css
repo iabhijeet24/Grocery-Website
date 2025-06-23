@@ -265,27 +265,34 @@ body {
 
 
 .slider-container2 {
-  width: 100%;
-  max-width: 1920px;
-  height: 1024px;
-  overflow: hidden;
-  margin: auto;
   position: relative;
+  overflow: hidden;
+  padding: 20px 0;
 }
 
 .slider-track2 {
   display: flex;
-  transition: transform 0.3s ease;
+  gap: 10px;
+  scroll-behavior: smooth;
   cursor: grab;
+  padding: 0 60px;
+}
+
+.slider-track2.dragging {
+  cursor: grabbing;
 }
 
 .slider-track2 img {
-  width: 1920px;
-  height: 1024px;
+  flex: 0 0 auto;
+  width: 480px;
+  height: 256px;
   object-fit: cover;
+  border-radius: 8px;
   user-select: none;
   pointer-events: none;
 }
+
+
 
 
 
@@ -690,7 +697,15 @@ body {
       height: 370px;
       padding: 10px;
       position: relative;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.05); 
+  transform: scale(1.03);
+  z-index: 2;
+}
+
     .card img {
       width: 100%;
       height: 150px;

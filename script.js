@@ -1,7 +1,8 @@
-// Wait for the entire page to load
-  window.onload = function () {
-    const btn = document.getElementById("backToTopBtn");
+// ---------------- Back to Top ----------------
+window.onload = function () {
+  const btn = document.getElementById("backToTopBtn");
 
+  if (btn) {
     window.onscroll = function () {
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         btn.style.display = "block";
@@ -13,17 +14,13 @@
     btn.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  };
+  }
+};
 
-
-
-
-
-
-  // ----------------------------SLIDER------------------------------
-  const sliderTrack = document.getElementById("sliderTrack");
+// ----------------- SLIDER 1 (Auto Slide) ------------------
+const sliderTrack = document.getElementById("sliderTrack");
+if (sliderTrack) {
   const images = sliderTrack.querySelectorAll("img");
-
   const imageWidth = 350;
   const imageGap = 20;
   const totalWidth = imageWidth + imageGap;
@@ -37,45 +34,55 @@
   }
 
   setInterval(slideImages, 3000);
+}
 
+// ----------------- SLIDER 2 (Manual Drag) ------------------
+const track = document.getElementById('sliderTrack2');
+if (track) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX;
+    scrollLeft = track.scrollLeft;
+  });
 
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
 
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.classList.remove('dragging');
+  });
 
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX) * 1.2;
+    track.scrollLeft = scrollLeft - walk;
+  });
 
+  // Touch support
+  track.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX;
+    scrollLeft = track.scrollLeft;
+  });
 
+  track.addEventListener('touchend', () => {
+    isDown = false;
+  });
 
-  // -------------------slider2-----------------------
-
-
-  const sliderTrack2 = document.getElementById("sliderTrack2");
-
-let isDragging = false;
-let startX;
-let scrollLeft;
-
-sliderTrack2.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startX = e.pageX - sliderTrack.offsetLeft;
-  scrollLeft = sliderTrack.scrollLeft;
-  sliderTrack.style.cursor = "grabbing";
-});
-
-sliderTrack2.addEventListener("mouseleave", () => {
-  isDragging = false;
-  sliderTrack.style.cursor = "grab";
-});
-
-sliderTrack2.addEventListener("mouseup", () => {
-  isDragging = false;
-  sliderTrack.style.cursor = "grab";
-});
-
-sliderTrack2.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - sliderTrack.offsetLeft;
-  const walk = (x - startX) * 1.2; 
-  sliderTrack2.scrollLeft = scrollLeft - walk;
-});
-
+  track.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.2;
+    track.scrollLeft = scrollLeft - walk;
+  });
+}
