@@ -36,53 +36,71 @@ if (sliderTrack) {
   setInterval(slideImages, 3000);
 }
 
-// ----------------- SLIDER 2 (Manual Drag) ------------------
+/* ----------------- SLIDER 2  (manual drag to scroll) ----------------- */
 const track = document.getElementById('sliderTrack2');
+
 if (track) {
   let isDown = false;
-  let startX;
-  let scrollLeft;
+  let startX = 0;
+  let scrollLeft = 0;
 
-  track.addEventListener('mousedown', (e) => {
+  /* -------- Desktop (mouse) -------- */
+  track.addEventListener('mousedown', e => {
     isDown = true;
     track.classList.add('dragging');
-    startX = e.pageX;
+    startX     = e.pageX;
     scrollLeft = track.scrollLeft;
   });
 
-  track.addEventListener('mouseleave', () => {
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-
-  track.addEventListener('mouseup', () => {
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-
-  track.addEventListener('mousemove', (e) => {
+  track.addEventListener('mousemove', e => {
     if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX;
-    const walk = (x - startX) * 1.2;
+    e.preventDefault();                          // stop text selection
+    const x   = e.pageX;
+    const walk = (x - startX) * 1.2;             // scroll-speed factor
     track.scrollLeft = scrollLeft - walk;
   });
 
-  // Touch support
-  track.addEventListener('touchstart', (e) => {
-    isDown = true;
-    startX = e.touches[0].pageX;
-    scrollLeft = track.scrollLeft;
-  });
+  ['mouseup', 'mouseleave'].forEach(type =>
+    track.addEventListener(type, () => {
+      isDown = false;
+      track.classList.remove('dragging');
+    })
+  );
 
-  track.addEventListener('touchend', () => {
-    isDown = false;
-  });
+  /* -------- Mobile (touch) -------- */
+  track.addEventListener(
+    'touchstart',
+    e => {
+      isDown = true;
+      track.classList.add('dragging');
+      startX     = e.touches[0].pageX;
+      scrollLeft = track.scrollLeft;
+    },
+    { passive: true }
+  );
 
-  track.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
-    const x = e.touches[0].pageX;
-    const walk = (x - startX) * 1.2;
-    track.scrollLeft = scrollLeft - walk;
-  });
+  track.addEventListener(
+    'touchmove',
+   e => {
+  if (!isDown) return;
+  e.preventDefault();                        // disable native scroll
+  const x = e.touches[0].pageX;
+  const walk = (x - startX) * 1.2;
+  track.scrollLeft = scrollLeft - walk;
 }
+
+
+
+
+
+      // -----------------------------CONTACT SECTION-------------------------------
+
+
+      // Scroll reveal animation (optional)
+window.addEventListener('scroll', () => {
+  const footer = document.querySelector('.footer');
+  const rect = footer.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    footer.classList.add('visible');
+  }
+});
