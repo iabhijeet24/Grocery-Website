@@ -205,6 +205,21 @@ body {
 
 
 
+
+
+.image-container{
+  height: 470px;
+  width: 95%;
+  position: relative;
+}
+
+.image-container img{
+  height: 100%;
+  width: 100%;
+  background-attachment: fixed;
+}
+
+
 /* Responsive Design */
 @media (max-width: 600px) {
   .search-container {
