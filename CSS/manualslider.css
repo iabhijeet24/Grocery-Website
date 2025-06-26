@@ -1,25 +1,32 @@
 .manualslider-container {
-  position: relative;
+  width: 100vw;
+  height: 256px;
   overflow: hidden;
-  padding: 20px 0;
-  margin-bottom: 60px;
+  position: relative;
+  margin: 120px 0px;
 }
 
 .manualslider-track {
   display: flex;
-  gap: 10px;
-  scroll-behavior: smooth;
-  cursor: grab;
-  padding: 0 60px;
+  width: max-content;
+  animation: scrollSlider 15s linear infinite;
 }
 
-
 .manualslider-track img {
-  flex: 0 0 auto;
   width: 480px;
   height: 256px;
   object-fit: cover;
-  border-radius: 8px;
-  user-select: none;
-  pointer-events: none;
+  flex-shrink: 0;
+  margin-right: 10px;
+  border-radius: 1px;
+}
+
+/* KEYFRAME animation: adjust speed by changing duration above */
+@keyframes scrollSlider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
