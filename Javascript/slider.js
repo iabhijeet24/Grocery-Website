@@ -10,7 +10,6 @@
   function slideImages() {
     index++;
     if (index > images.length - 3) {
-      // reset when only last 2 or less visible
       index = 0;
     }
     track.style.transform = `translateX(-${index * totalWidth}px)`;

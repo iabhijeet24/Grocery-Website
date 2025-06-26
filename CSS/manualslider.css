@@ -1,0 +1,25 @@
+.manualslider-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  margin-bottom: 60px;
+}
+
+.manualslider-track {
+  display: flex;
+  gap: 10px;
+  scroll-behavior: smooth;
+  cursor: grab;
+  padding: 0 60px;
+}
+
+
+.manualslider-track img {
+  flex: 0 0 auto;
+  width: 480px;
+  height: 256px;
+  object-fit: cover;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
