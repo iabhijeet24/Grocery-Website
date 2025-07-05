@@ -29,6 +29,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 2rem;
+  padding: 0px 40px;
 }
 
 .footer-links h4 {
@@ -90,7 +91,7 @@
   .footer-links {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    text-align: left;
   }
 
   .footer-links > div {
